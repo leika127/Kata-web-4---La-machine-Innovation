@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    <title>"La Machine à invocation"</title>
+</head>
+<body>
+    <!--L'invocation-->
+    <main>
+        <section id="Invocation">
+            <div class="orbe"></div>
+            <h1>La Machine à invocation</h1>
+            <p class="sous-titre">dis moi qui tu es... Quelle créature es tu?</p>
+
+            <form id="formulaire">
+                <div class="champ">
+                    <label for="prenom">Ton prénom</label>
+                    <input type="text" id="prenom" placeholder="Entre ton prénom..." required>
+                </div>
+
+                <div class="champ">
+                    <label for="creature">Ta créature</label>
+                    <select id="creature">
+                        <option value="le Chat-Octo">le Chat-Octo</option>
+                        <option value="le Dragon-Debug">le Dragon-Debug</option>
+                        <option value="la Licorne-CSS">la Licorne-CSS</option>
+                        <option value="le Renard-Refacto">le Renard-Refacto</option>
+                    </select>
+                </div>
+
+                <button type="submit">Invoquer</button>
+            </form>
+        </section>
+
+        <!-- ZONE DE RÉSULTAT (cachée au départ) -->
+        <section id="resultat" class="cache">
+            <div class="orbe orbe--resultat"></div>
+            <div class="carte">
+                <p id="message"></p>
+            </div>
+            <button id="recommencer">Renvoyer la créature</button>    
+        </section>  
+    </main>
+</body>
+</html>

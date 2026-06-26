@@ -1,0 +1,251 @@
+/* ===========================
+   RESET & BASE
+=========================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===========================
+   VARIABLES (palette)
+   Thème : grimoire nocturne
+   Violet profond + or ancien + lueur cyan
+=========================== */
+:root {
+    --fond:        #1ba7b1;
+    --surface:     #26128a;
+    --bordure:     #8172c5;
+    --or:          #c9a84c;
+    --or-clair:    #f0d080;
+    --cyan:        #5a01c0;
+    --texte:       #e8e0f0;
+    --texte-doux:  #5f528b;
+    --rayon:       12px;
+}
+
+/* ===========================
+   BODY & LAYOUT
+=========================== */
+body {
+    background-color: var(--fond);
+    color: var(--texte);
+    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    /* Texture étoilée subtile */
+    background-image:
+        radial-gradient(ellipse at 20% 30%, #1a0e3a 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, #0a1a2e 0%, transparent 60%);
+}
+
+main {
+    width: 100%;
+    max-width: 480px;
+}
+
+/* ===========================
+   ORBE DÉCORATIVE
+=========================== */
+.orbe {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--cyan), #6a3fa0 50%, #b41778);
+    box-shadow:
+        0 0 20px rgba(38, 170, 142, 0.877),
+        0 0 60px rgb(107, 63, 160);
+    margin: 0 auto 1.5rem;
+    animation: pulser 3s ease-in-out infinite;
+}
+
+.orbe--resultat {
+    background: radial-gradient(circle at 35% 35%, var(--or-clair), var(--or) 50%, #3a1a00);
+    box-shadow:
+        0 0 20px rgba(240, 208, 128, 0.5),
+        0 0 60px rgba(201, 168, 76, 0.3);
+}
+
+@keyframes pulser {
+    0%, 100% { transform: scale(1);   opacity: 1; }
+    50%       { transform: scale(1.08); opacity: 0.85; }
+}
+
+/* ===========================
+   SECTION INVOCATION
+=========================== */
+#invocation {
+    background-color: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: var(--or-clair);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.sous-titre {
+    color: var(--texte-doux);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* ===========================
+   FORMULAIRE
+=========================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+}
+
+label {
+    color: var(--or);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+input,
+select {
+    background-color: var(--fond);
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    color: var(--texte);
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0.7rem 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--texte-doux);
+}
+
+input:focus,
+select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(94, 240, 232, 0.15);
+}
+
+select option {
+    background-color: var(--surface);
+}
+
+/* ===========================
+   BOUTONS
+=========================== */
+button[type="submit"] {
+    background: linear-gradient(135deg, #4a2fa0, #6a3fc0);
+    border: 1px solid var(--cyan);
+    border-radius: 8px;
+    color: var(--cyan);
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    letter-spacing: 0.1em;
+    padding: 0.85rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #5a3fc0, #7a4fd0);
+    box-shadow: 0 0 16px rgba(94, 240, 233, 0.979);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.97);
+}
+
+#recommencer {
+    background: transparent;
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    color: var(--texte-doux);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+#recommencer:hover {
+    border-color: var(--or);
+    color: var(--or);
+}
+
+/* ===========================
+   SECTION RÉSULTAT
+=========================== */
+#resultat {
+    background-color: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: var(--rayon);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 40px rgb(112, 46, 46);
+    animation: apparaitre 0.5s ease;
+}
+
+@keyframes apparaitre {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.carte {
+    border: 1px solid var(--or);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 0.5rem;
+    background: rgba(201, 168, 76, 0.808);
+}
+
+#message {
+    color: var(--texte);
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* ===========================
+   CLASSE UTILITAIRE
+=========================== */
+.cache {
+    display: none;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+}
